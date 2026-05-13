@@ -110,11 +110,12 @@ nav.scrolled {padding: 10px 5%; box-shadow: var(--shadow-hover);}
 .logo span {color: var(--primary);}
 .logo-icon {
   width: 40px; height: 40px;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
+  background: white;
   border-radius: 12px; display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 15px rgba(26, 95, 122, 0.3);
+  box-shadow: 0 4px 15px rgba(26, 95, 122, 0.15);
+  border: 2px solid var(--primary);
 }
-.logo-icon svg {width: 24px; height: 24px; fill: white;}
+.logo-icon svg {width: 28px; height: 28px; fill: var(--primary);}
 .nav-links {display: flex; gap: 32px; list-style: none;}
 .nav-links a {
   text-decoration: none; color: var(--gray);
@@ -270,8 +271,9 @@ section {padding: 100px 5%;}
 .svc-num {font-size: 12px; font-weight: 600; color: var(--gold); letter-spacing: 2px; margin-bottom: 8px;}
 .svc-name {font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; color: var(--dark); margin-bottom: 12px;}
 .svc-desc {font-size: 14px; color: var(--text-light); margin-bottom: 20px; line-height: 1.7;}
-.svc-price {font-size: 14px; color: var(--primary); font-weight: 600; padding-top: 16px; border-top: 1px solid rgba(201,168,76,0.15); cursor: pointer; transition: all 0.3s; display: inline-block;}
+.svc-price {font-size: 14px; color: var(--primary); font-weight: 600; padding-top: 16px; border-top: 1px solid rgba(201,168,76,0.15); cursor: pointer; transition: all 0.3s; display: block;}
 .svc-price:hover {color: var(--gold); transform: translateX(5px);}
+.svc-card {cursor: default;}
 
 /* ========== WHY US ========== */
 #whyus {background: var(--off-white);}
@@ -429,7 +431,8 @@ section {padding: 100px 5%;}
 footer {background: var(--dark); color: white; padding: 60px 5% 30px;}
 .footer-container {max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 40px;}
 .footer-brand .logo {color: white; margin-bottom: 16px;}
-.footer-brand .logo-icon {background: linear-gradient(135deg, var(--gold), var(--gold-light));}
+.footer-brand .logo-icon {background: white; border: 2px solid var(--gold);}
+.footer-brand .logo-icon svg {fill: var(--gold);}
 .footer-brand p {font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.8;}
 .footer-col h4 {font-size: 16px; margin-bottom: 20px; font-weight: 600; color: var(--gold);}
 .footer-col ul {list-style: none;}
@@ -455,8 +458,17 @@ footer {background: var(--dark); color: white; padding: 60px 5% 30px;}
   display: none; position: fixed; inset: 0; z-index: 10000;
   align-items: center; justify-content: center;
   padding: 20px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
 }
-.modal.open {display: flex; align-items: center; justify-content: center;}
+.modal.open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: visible;
+  opacity: 1;
+}
 .modal-overlay {
   position: absolute; inset: 0;
   background: rgba(26, 35, 50, 0.7);
@@ -858,7 +870,7 @@ footer {background: var(--dark); color: white; padding: 60px 5% 30px;}
       <div class="svc-num">01</div>
       <div class="svc-name">Implantologiya</div>
       <p class="svc-desc">Nobel Biocare va Straumann brendlaridan yuqori sifatli implantlar. Umr bo'yi kafolat.</p>
-      <div class="svc-price" onclick="openModal('implant')" style="cursor:pointer">Batafsil →</div>
+      <div class="svc-price" data-service="implant">Batafsil →</div>
     </div>
     <div class="svc-card animate-in">
       <div class="svc-icon-wrap">
@@ -870,7 +882,7 @@ footer {background: var(--dark); color: white; padding: 60px 5% 30px;}
       <div class="svc-num">02</div>
       <div class="svc-name">Vinirlar</div>
       <p class="svc-desc">Hollywood tabassumi uchun keramika vinirlar. Minimal invaziv usul va tabiiy ko'rinish.</p>
-      <div class="svc-price" onclick="openModal('vinir')">Batafsil →</div>
+      <div class="svc-price" data-service="vinir">Batafsil →</div>
     </div>
     <div class="svc-card animate-in">
       <div class="svc-icon-wrap">
@@ -882,7 +894,7 @@ footer {background: var(--dark); color: white; padding: 60px 5% 30px;}
       <div class="svc-num">03</div>
       <div class="svc-name">Ortodontiya</div>
       <p class="svc-desc">Metal, keramika va safir breketlar. Ko'rinmas Invisalign alignerlar.</p>
-      <div class="svc-price" onclick="openModal('ortodont')">Batafsil →</div>
+      <div class="svc-price" data-service="ortodont">Batafsil →</div>
     </div>
     <div class="svc-card animate-in">
       <div class="svc-icon-wrap">
@@ -893,7 +905,7 @@ footer {background: var(--dark); color: white; padding: 60px 5% 30px;}
       <div class="svc-num">04</div>
       <div class="svc-name">Tish oqartirish</div>
       <p class="svc-desc">Zoom! tizimi bilan professional oqartirish. 8 tonna yorqinroq natija.</p>
-      <div class="svc-price" onclick="openModal('oqartirish')">Batafsil →</div>
+      <div class="svc-price" data-service="oqartirish">Batafsil →</div>
     </div>
     <div class="svc-card animate-in">
       <div class="svc-icon-wrap">
@@ -905,7 +917,7 @@ footer {background: var(--dark); color: white; padding: 60px 5% 30px;}
       <div class="svc-num">05</div>
       <div class="svc-name">Terapevtik davolash</div>
       <p class="svc-desc">Kariyesni zamonaviy usullar bilan davolash. Fotografik rangdagi plombalar.</p>
-      <div class="svc-price" onclick="openModal('terapiya')">Batafsil →</div>
+      <div class="svc-price" data-service="terapiya">Batafsil →</div>
     </div>
     <div class="svc-card animate-in">
       <div class="svc-icon-wrap">
@@ -918,7 +930,7 @@ footer {background: var(--dark); color: white; padding: 60px 5% 30px;}
       <div class="svc-num">06</div>
       <div class="svc-name">Bolalar stomatologiyasi</div>
       <p class="svc-desc">Bolalar uchun maxsus muhit. Qo'rquvsiz va zavqli davolash.</p>
-      <div class="svc-price" onclick="openModal('bolalar')">Batafsil →</div>
+      <div class="svc-price" data-service="bolalar">Batafsil →</div>
     </div>
   </div>
 </section>
@@ -1055,7 +1067,7 @@ footer {background: var(--dark); color: white; padding: 60px 5% 30px;}
           <div class="c-icon">
             <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
           </div>
-          <div><div class="c-label">Telefon</div><div class="c-val">+998 76 223 00 00</div></div>
+          <div><div class="c-label">Telefon</div><div class="c-val">+998 99 036 96 73</div></div>
         </div>
         <div class="c-item">
           <div class="c-icon">
@@ -1067,7 +1079,7 @@ footer {background: var(--dark); color: white; padding: 60px 5% 30px;}
           <div class="c-icon">
             <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
           </div>
-          <div><div class="c-label">Ish vaqti</div><div class="c-val">Dushanba - Shanba, 09:00 - 18:00</div></div>
+          <div><div class="c-label">Ish vaqti</div><div class="c-val">Har kuni, 24/7</div></div>
         </div>
       </div>
     </div>
@@ -1268,7 +1280,8 @@ function openModal(serviceKey) {
   document.body.style.overflow = 'hidden';
 }
 function closeModal() {
-  document.getElementById('modal').classList.remove('open');
+  const modal = document.getElementById('modal');
+  modal.classList.remove('open');
   document.body.style.overflow = '';
 }
 // Toast
@@ -1289,6 +1302,13 @@ function sendForm() {
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {e.preventDefault(); document.querySelector(a.getAttribute('href')).scrollIntoView({behavior: 'smooth'});});
+});
+// Service card click handlers
+document.querySelectorAll('.svc-price').forEach(el => {
+  el.addEventListener('click', function() {
+    const service = this.getAttribute('data-service');
+    if (service) openModal(service);
+  });
 });
 </script>
 </body>
