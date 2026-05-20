@@ -31,15 +31,17 @@
   --shadow: 0 4px 20px rgba(26, 95, 122, 0.08);
   --shadow-hover: 0 15px 40px rgba(26, 95, 122, 0.2);
 }
-html {scroll-behavior: smooth; -webkit-text-size-adjust: 100%;}
+html {scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; max-width: 100%;}
 body {
   font-family: 'Poppins', sans-serif;
   background: var(--white);
   color: var(--text-dark);
   line-height: 1.6;
   overflow-x: hidden;
+  max-width: 100%;
   -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
+  touch-action: pan-y;
+  position: relative;
 }
 ::-webkit-scrollbar {width: 8px;}
 ::-webkit-scrollbar-track {background: var(--light-gray);}
@@ -895,7 +897,6 @@ footer {background: var(--dark); color: white; padding: 60px 5% 30px;}
       <div class="svc-num">01</div>
       <div class="svc-name">Implantologiya</div>
       <p class="svc-desc">Nobel Biocare va Straumann brendlaridan yuqori sifatli implantlar. Umr bo'yi kafolat.</p>
-      <div class="svc-price" data-service="implant">Batafsil →</div>
     </div>
     <div class="svc-card animate-in">
       <div class="svc-icon-wrap">
@@ -907,7 +908,6 @@ footer {background: var(--dark); color: white; padding: 60px 5% 30px;}
       <div class="svc-num">02</div>
       <div class="svc-name">Vinirlar</div>
       <p class="svc-desc">Hollywood tabassumi uchun keramika vinirlar. Minimal invaziv usul va tabiiy ko'rinish.</p>
-      <div class="svc-price" data-service="vinir">Batafsil →</div>
     </div>
     <div class="svc-card animate-in">
       <div class="svc-icon-wrap">
@@ -919,7 +919,6 @@ footer {background: var(--dark); color: white; padding: 60px 5% 30px;}
       <div class="svc-num">03</div>
       <div class="svc-name">Ortodontiya</div>
       <p class="svc-desc">Metal, keramika va safir breketlar. Ko'rinmas Invisalign alignerlar.</p>
-      <div class="svc-price" data-service="ortodont">Batafsil →</div>
     </div>
     <div class="svc-card animate-in">
       <div class="svc-icon-wrap">
@@ -930,7 +929,6 @@ footer {background: var(--dark); color: white; padding: 60px 5% 30px;}
       <div class="svc-num">04</div>
       <div class="svc-name">Tish oqartirish</div>
       <p class="svc-desc">Zoom! tizimi bilan professional oqartirish. 8 tonna yorqinroq natija.</p>
-      <div class="svc-price" data-service="oqartirish">Batafsil →</div>
     </div>
     <div class="svc-card animate-in">
       <div class="svc-icon-wrap">
@@ -942,7 +940,6 @@ footer {background: var(--dark); color: white; padding: 60px 5% 30px;}
       <div class="svc-num">05</div>
       <div class="svc-name">Terapevtik davolash</div>
       <p class="svc-desc">Kariyesni zamonaviy usullar bilan davolash. Fotografik rangdagi plombalar.</p>
-      <div class="svc-price" data-service="terapiya">Batafsil →</div>
     </div>
     <div class="svc-card animate-in">
       <div class="svc-icon-wrap">
@@ -955,7 +952,6 @@ footer {background: var(--dark); color: white; padding: 60px 5% 30px;}
       <div class="svc-num">06</div>
       <div class="svc-name">Bolalar stomatologiyasi</div>
       <p class="svc-desc">Bolalar uchun maxsus muhit. Qo'rquvsiz va zavqli davolash.</p>
-      <div class="svc-price" data-service="bolalar">Batafsil →</div>
     </div>
   </div>
 </section>
