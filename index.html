@@ -350,6 +350,7 @@ section {padding: 100px 5%;}
   align-items: center; justify-content: center;
   border: 1px solid var(--glass-border);
   cursor: pointer; transition: all 0.4s;
+  text-decoration: none; color: inherit;
 }
 .gallery-item:hover {transform: scale(1.05) rotate(2deg); box-shadow: var(--shadow-hover); border-color: var(--gold);}
 .gallery-content {text-align: center;}
@@ -770,13 +771,18 @@ footer {background: var(--dark); color: white; padding: 60px 5% 30px;}
     <span>OQ DUR</span> DENTAL
   </a>
   <ul class="nav-links">
-    <li><a href="#about">Biz haqimizda</a></li>
-    <li><a href="#services">Xizmatlar</a></li>
-    <li><a href="#whyus">Afzalliklar</a></li>
-    <li><a href="#doctors">Shifokorlar</a></li>
-    <li><a href="#gallery">Natijalar</a></li>
+    <li><a href="#about" data-i18n="nav_about">Biz haqimizda</a></li>
+    <li><a href="#services" data-i18n="nav_services">Xizmatlar</a></li>
+    <li><a href="#whyus" data-i18n="nav_why">Afzalliklar</a></li>
+    <li><a href="#doctors" data-i18n="nav_doctors">Shifokorlar</a></li>
+    <li><a href="#gallery" data-i18n="nav_gallery">Natijalar</a></li>
   </ul>
-  <a href="https://t.me/oqdurdental_bot" target="_blank" class="nav-cta">Qabulga yozilish</a>
+  <a href="https://t.me/oqdurdental_bot" target="_blank" class="nav-cta" data-i18n="nav_cta">Qabulga yozilish</a>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('uz')">UZ</button>
+    <button class="lang-btn" onclick="setLang('ru')">RU</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
   <div class="hamburger" onclick="openMenu()"><span></span><span></span><span></span></div>
 </nav>
 
@@ -795,12 +801,12 @@ footer {background: var(--dark); color: white; padding: 60px 5% 30px;}
 <section id="home">
   <div class="hero-container">
     <div class="hero-content">
-      <div class="hero-badge">Termiz shahrida</div>
+      <div class="hero-badge" data-i18n="hero_badge">Termiz shahrida</div>
       <h1 class="hero-h1">OQ DUR <span>DENTAL</span></h1>
-      <p class="hero-sub">Termizning eng zamonaviy stomatologiya markazi. Sizga chiroyli va sog'lom tabassum sovg'a qilamiz.</p>
+      <p class="hero-sub" data-i18n="hero_sub">Termizning eng zamonaviy stomatologiya markazi. Sizga chiroyli va sog'lom tabassum sovg'a qilamiz.</p>
       <div class="hero-btns">
-        <a href="https://t.me/oqdurdental_bot" target="_blank" class="btn-primary">Bepul maslahat oling →</a>
-        <a href="#services" class="btn-outline">Xizmatlar</a>
+        <a href="https://t.me/oqdurdental_bot" target="_blank" class="btn-primary" data-i18n="hero_btn1">Bepul maslahat oling →</a>
+        <a href="#services" class="btn-outline" data-i18n="hero_btn2">Xizmatlar</a>
       </div>
     </div>
     <div class="hero-visual">
@@ -812,13 +818,13 @@ footer {background: var(--dark); color: white; padding: 60px 5% 30px;}
           <div class="stat-icon">
             <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
           </div>
-          <div class="stat-text"><h4>5000+</h4><p>Baxtli bemorlar</p></div>
+          <div class="stat-text"><h4>5000+</h4><p data-i18n="stat_patients">Baxtli bemorlar</p></div>
         </div>
         <div class="stat-card">
           <div class="stat-icon">
             <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           </div>
-          <div class="stat-text"><h4>12+ yil</h4><p>Tajriba</p></div>
+          <div class="stat-text"><h4>12+ yil</h4><p data-i18n="stat_exp">Tajriba</p></div>
         </div>
       </div>
     </div>
@@ -856,7 +862,7 @@ footer {background: var(--dark); color: white; padding: 60px 5% 30px;}
           <div class="about-feature-icon">
             <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
           </div>
-          <span>7/24 qabul</span>
+          <span data-i18n="about_hours">Har kuni 8:00 — 23:00</span>
         </div>
       </div>
     </div>
@@ -1040,35 +1046,38 @@ footer {background: var(--dark); color: white; padding: 60px 5% 30px;}
 <!-- GALLERY -->
 <section id="gallery">
   <div class="section-header">
-    <span class="s-tag">Natijalar</span>
-    <h2 class="s-title">Oldin va keyin</h2>
-    <p class="s-desc">Bemorlarimizning ajoyib natijalari</p>
+    <span class="s-tag" data-i18n="gallery_tag">Natijalar</span>
+    <h2 class="s-title" data-i18n="gallery_title">Oldin va keyin</h2>
+    <p class="s-desc" data-i18n="gallery_desc">Bemorlarimizning ajoyib natijalari</p>
   </div>
   <div class="gallery-grid">
-    <div class="gallery-item">
+    <a href="implant.html" class="gallery-item">
       <div class="gallery-content">
         <div class="gallery-icon">
           <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
         </div>
-        <div class="gallery-label">Implant</div>
+        <div class="gallery-label" data-i18n="gallery_implant">Implant</div>
+        <div style="font-size:11px;color:var(--text-light);margin-top:4px">10 ta natija →</div>
       </div>
-    </div>
-    <div class="gallery-item">
+    </a>
+    <a href="vinirlar.html" class="gallery-item">
       <div class="gallery-content">
         <div class="gallery-icon">
           <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
         </div>
-        <div class="gallery-label">Vinirlar</div>
+        <div class="gallery-label" data-i18n="gallery_vinir">Vinirlar</div>
+        <div style="font-size:11px;color:var(--text-light);margin-top:4px">10 ta natija →</div>
       </div>
-    </div>
-    <div class="gallery-item">
+    </a>
+    <a href="breketlar.html" class="gallery-item">
       <div class="gallery-content">
         <div class="gallery-icon">
           <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
         </div>
-        <div class="gallery-label">Breketlar</div>
+        <div class="gallery-label" data-i18n="gallery_breket">Breketlar</div>
+        <div style="font-size:11px;color:var(--text-light);margin-top:4px">10 ta natija →</div>
       </div>
-    </div>
+    </a>
   </div>
 </section>
 
@@ -1101,7 +1110,7 @@ footer {background: var(--dark); color: white; padding: 60px 5% 30px;}
           <div class="c-icon">
             <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
           </div>
-          <div><div class="c-label">Ish vaqti</div><div class="c-val">Har kuni, 24/7</div></div>
+          <div><div class="c-label">Ish vaqti</div><div class="c-val" data-i18n="hours_val">Har kuni 08:00 — 23:00</div></div>
         </div>
       </div>
     </div>
@@ -1185,6 +1194,16 @@ footer {background: var(--dark); color: white; padding: 60px 5% 30px;}
 </a>
 
 <style>
+/* ===== TOOTH PATTERN BG ===== */
+body::after{content:'';position:fixed;inset:0;z-index:-1;opacity:.035;pointer-events:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 24 24' fill='%231A5F7A'><path d='M12 2C8.5 2 6 4.5 6 7.5c0 2 1 3.5 2 4.5v8c0 1.5 1.5 2 4 2s4-.5 4-2v-8c1-1 2-2.5 2-4.5C18 4.5 15.5 2 12 2z'/></svg>");background-size:80px 80px}
+
+/* ===== LANG SWITCHER ===== */
+.lang-switcher{display:flex;align-items:center;gap:2px;background:var(--light-gray);border-radius:50px;padding:3px;border:1px solid var(--glass-border)}
+.lang-btn{padding:6px 12px;border-radius:50px;border:none;background:transparent;font-size:12px;font-weight:600;color:var(--gray);cursor:pointer;transition:all .3s;font-family:'Poppins',sans-serif}
+.lang-btn.active{background:var(--primary);color:#fff;box-shadow:0 2px 10px rgba(26,95,122,.3)}
+.lang-btn:hover:not(.active){color:var(--primary);background:rgba(26,95,122,.08)}
+@media(max-width:480px){.lang-btn{padding:5px 9px;font-size:11px}}
+
 .floating-tg {
   display: none;
   position: fixed; bottom: 20px; right: 20px;
@@ -1332,6 +1351,61 @@ document.querySelectorAll('.svc-price').forEach(el => {
     if (service) openModal(service);
   });
 });
+
+// ===== LANGUAGE SWITCHER =====
+const translations = {
+  uz: {
+    nav_about:'Biz haqimizda', nav_services:'Xizmatlar', nav_why:'Afzalliklar', nav_doctors:'Shifokorlar', nav_gallery:'Natijalar', nav_cta:'Qabulga yozilish',
+    hero_badge:'Termiz shahrida', hero_title:'OQ DUR <span>DENTAL</span>', hero_sub:"Termizning eng zamonaviy stomatologiya markazi. Sizga chiroyli va sog'lom tabassum sovg'a qilamiz.",
+    hero_btn1:'Bepul maslahat oling →', hero_btn2:'Xizmatlar',
+    about_tag:'Biz haqimizda', about_title:"Termizning eng <span>zamonaviy</span> stomatologiya markazi",
+    about_iso:'ISO 9001 sertifikat', about_sterile:"Toza va steril", about_guarantee:'Barcha xizmatlar kafolatli', about_hours:'Har kuni 8:00 — 23:00',
+    gallery_tag:'Natijalar', gallery_title:'Oldin va keyin', gallery_desc:"Bemorlarimizning ajoyib natijalari",
+    gallery_implant:'Implant', gallery_vinir:'Vinirlar', gallery_breket:'Breketlar',
+    hours_val:'Har kuni 08:00 — 23:00',
+    contact_title:'Biz bilan bog\'laning', contact_cta:'Qabulga yozilish',
+    footer_copy:'© 2026 OQ DUR DENTAL. Barcha huquqlar himoyalangan. Termiz, Surxondaryo',
+    stat_patients:'Baxtli bemorlar', stat_exp:'Tajriba',
+  },
+  ru: {
+    nav_about:'О нас', nav_services:'Услуги', nav_why:'Преимущества', nav_doctors:'Врачи', nav_gallery:'Результаты', nav_cta:'Записаться',
+    hero_badge:'В городе Термез', hero_title:'OQ DUR <span>DENTAL</span>', hero_sub:'Самый современный стоматологический центр Термеза. Подарим вам красивую и здоровую улыбку.',
+    hero_btn1:'Получить консультацию →', hero_btn2:'Услуги',
+    about_tag:'О нас', about_title:'Самый <span>современный</span> стоматологический центр Термеза',
+    about_iso:'Сертификат ISO 9001', about_sterile:'Чистота и стерильность', about_guarantee:'Гарантия на все услуги', about_hours:'Каждый день 8:00 — 23:00',
+    gallery_tag:'Результаты', gallery_title:'До и После', gallery_desc:'Удивительные результаты наших пациентов',
+    gallery_implant:'Имплант', gallery_vinir:'Виниры', gallery_breket:'Брекеты',
+    hours_val:'Каждый день 08:00 — 23:00',
+    contact_title:'Свяжитесь с нами', contact_cta:'Записаться на приём',
+    footer_copy:'© 2026 OQ DUR DENTAL. Все права защищены. Термез, Сурхандарья',
+    stat_patients:'Довольных пациентов', stat_exp:'Опыт',
+  },
+  en: {
+    nav_about:'About', nav_services:'Services', nav_why:'Why Us', nav_doctors:'Doctors', nav_gallery:'Results', nav_cta:'Book Now',
+    hero_badge:'In Termez city', hero_title:'OQ DUR <span>DENTAL</span>', hero_sub:"Termez's most modern dental center. We gift you a beautiful and healthy smile.",
+    hero_btn1:'Get Free Consultation →', hero_btn2:'Services',
+    about_tag:'About Us', about_title:'The most <span>modern</span> dental center in Termez',
+    about_iso:'ISO 9001 Certified', about_sterile:'Clean & Sterile', about_guarantee:'All services guaranteed', about_hours:'Every day 8:00 — 23:00',
+    gallery_tag:'Results', gallery_title:'Before & After', gallery_desc:'Amazing results of our patients',
+    gallery_implant:'Implants', gallery_vinir:'Veneers', gallery_breket:'Braces',
+    hours_val:'Every day 08:00 — 23:00',
+    contact_title:'Contact Us', contact_cta:'Book an Appointment',
+    footer_copy:'© 2026 OQ DUR DENTAL. All rights reserved. Termez, Surkhandarya',
+    stat_patients:'Happy patients', stat_exp:'Experience',
+  }
+};
+
+function setLang(lang) {
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.toLowerCase() === lang));
+  const t = translations[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+  localStorage.setItem('lang', lang);
+}
+// Apply saved language
+(function(){ const saved = localStorage.getItem('lang'); if(saved && translations[saved]) setLang(saved); })();
 </script>
 </body>
 </html>
